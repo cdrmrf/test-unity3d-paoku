@@ -87,7 +87,7 @@ public class PlayerControl : IGameReset
                 transform.Rotate(0f, 180f, 0f);
             }
             //  每过一关速度提升一点
-            Move(0.005f * GameManage.INSTANCE.playerInfo.level);
+            Move(0.02f * GameManage.INSTANCE.playerInfo.level);
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -97,7 +97,7 @@ public class PlayerControl : IGameReset
                 curDirection = DirectionEnum.LEFT;
                 transform.Rotate(0f, 180f, 0f);
             }
-            Move(0.015f * GameManage.INSTANCE.playerInfo.level * -1);
+            Move(0.1f * -1);
         }
     }
 

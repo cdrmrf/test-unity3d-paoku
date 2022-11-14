@@ -9,17 +9,16 @@ using UnityEngine.Events;
 /// </summary>
 public class Ending : MonoBehaviour
 {
-    private TMP_Text span;
+    public TMP_Text span;
 
     void Awake()
     {
-        span = GetComponentInChildren<TMP_Text>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        span.gameObject.SetActive(true);
     }
 
     void Update()
