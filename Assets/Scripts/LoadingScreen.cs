@@ -45,7 +45,7 @@ namespace HeneGames.Sceneloader
 
             GameSetting gs = new GameSetting();
             gs.startMode = startType;
-            GameSettingConfig.INSTANCE.SaveSetting(gs);
+            GameSettingConfig.Instance.SaveSetting(gs);
         }
 
         private float fakeProgress = 0f;

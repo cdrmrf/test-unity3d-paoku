@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameSettingConfig
+public class GameSettingConfig : Singleton<GameSettingConfig>
 {
-
-    public static GameSettingConfig INSTANCE = new GameSettingConfig();
-
     private GameSetting setting;
-
-    private GameSettingConfig() { }
 
     public void SaveSetting(GameSetting setting)
     {
+        Debug.Log($"SaveSetting, setting={setting}");
         this.setting = setting;
     }
 
@@ -21,7 +17,5 @@ public class GameSettingConfig
     {
         return this.setting;
     }
-
-
 
 }

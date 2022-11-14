@@ -20,7 +20,7 @@ public class GroundManage : IGameReset {
 
     void Awake() {
         //  注册事件监听
-        EventCenter.GetInstance().AddEventListener2(EventEnum.GAME_RESET, Reset);
+        EventCenter.Instance.AddEventListener2(EventEnum.GAME_RESET, Reset);
     }
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class GroundManage : IGameReset {
 
     // Update is called once per frame
     void Update() {
-        if(!GameManage.INSTANCE.IsRunning()) {
+        if(!GameManage.Instance.IsRunning()) {
             return;
         }
 
@@ -38,7 +38,7 @@ public class GroundManage : IGameReset {
         foreach (Transform tran in transform) {
             //  土地向后方移动
             Vector3 objPos = tran.position;
-            objPos.x = objPos.x - speed * Time.deltaTime * (1.0f + GameManage.INSTANCE.playerInfo.level / 5.0f);
+            objPos.x = objPos.x - speed * Time.deltaTime * (1.0f + GameManage.Instance.playerInfo.level / 5.0f);
             tran.position = objPos;
 
             //  超出可视区域的都清除
@@ -65,7 +65,7 @@ public class GroundManage : IGameReset {
         bool rand = true;
         var lastGround = this.lastGround?.transform;
         //  minGroundCount，每一关要创建的土地数量
-        var p = GameManage.INSTANCE.playerInfo;
+        var p = GameManage.Instance.playerInfo;
         int minGroundCount = p.level * 10;
         GameObject newGround = this.groundCounter >= minGroundCount ? Instantiate(endingModel, transform) : Instantiate(groundModel, transform);
         //  土地达到配置，生成终点，停止创建新土地，终点不添加障碍物，不随机宽度

@@ -35,13 +35,13 @@ public class PlayerControl : IGameReset
         service = new PlayerService();
         curDirection = DirectionEnum.RIGHT;
         //  注册事件监听
-        EventCenter.GetInstance().AddEventListener2(EventEnum.GAME_RESET, Reset);
+        EventCenter.Instance.AddEventListener2(EventEnum.GAME_RESET, Reset);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        manage = GameManage.INSTANCE;
+        manage = GameManage.Instance;
         rbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -87,7 +87,7 @@ public class PlayerControl : IGameReset
                 transform.Rotate(0f, 180f, 0f);
             }
             //  每过一关速度提升一点
-            Move(0.02f * GameManage.INSTANCE.playerInfo.level);
+            Move(0.02f * GameManage.Instance.playerInfo.level);
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -139,7 +139,7 @@ public class PlayerControl : IGameReset
             isOnGround = true;
             jumpCounter = 0;
             animator.SetBool("IsJump", false);
-            GameManage.INSTANCE.SetGameStatus(GameStatusEnum.PASS);
+            GameManage.Instance.SetGameStatus(GameStatusEnum.PASS);
         }
         //  死了
         if (coll.collider.tag == "Die")
@@ -204,7 +204,7 @@ public class PlayerControl : IGameReset
 
     public override void Reset()
     {
-        GameManage.INSTANCE.playerInfo.ResetHP();
+        GameManage.Instance.playerInfo.ResetHP();
         transform.position = playerInitPosition;
         animator.SetBool("IsDie", false);
         animator.SetBool("IsJump", false);

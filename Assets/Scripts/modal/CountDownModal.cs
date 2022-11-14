@@ -18,7 +18,7 @@ public class CountDownModal : MonoBehaviour
     void Awake()
     {
         //  注册事件监听
-        EventCenter.GetInstance().AddEventListener<UnityAction>(EventEnum.COUNT_DOWN, StartCountDown);
+        EventCenter.Instance.AddEventListener<UnityAction>(EventEnum.COUNT_DOWN, StartCountDown);
         span = GetComponentInChildren<TMP_Text>();
     }
 

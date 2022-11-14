@@ -24,22 +24,22 @@ public class WaitRebornModal : IGameModal
 
     private void OnEnable()
     {
-        span.text = $"继续游戏？\n还有{GameManage.INSTANCE.playerInfo.HP}次机会";
+        span.text = $"继续游戏？\n还有{GameManage.Instance.playerInfo.HP}次机会";
     }
 
     public void Yes()
     {
         //  REBORN: 重置角色位置
-        GameManage.INSTANCE.SetGameStatus(GameStatusEnum.REBORN);
-        UnityAction callback = () => GameManage.INSTANCE.SetGameStatus(GameStatusEnum.PLAY);
+        GameManage.Instance.SetGameStatus(GameStatusEnum.REBORN);
+        UnityAction callback = () => GameManage.Instance.SetGameStatus(GameStatusEnum.PLAY);
         //  3秒倒计时，倒计时结束开始游戏
-        EventCenter.GetInstance().EventTrigger<UnityAction>(EventEnum.COUNT_DOWN, callback);
+        EventCenter.Instance.EventTrigger<UnityAction>(EventEnum.COUNT_DOWN, callback);
         this.gameObject.SetActive(false);
     }
 
     public void No()
     {
-        GameManage.INSTANCE.SetGameStatus(GameStatusEnum.DEAD);
+        GameManage.Instance.SetGameStatus(GameStatusEnum.DEAD);
     }
 
 }

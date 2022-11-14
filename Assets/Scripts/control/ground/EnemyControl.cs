@@ -15,12 +15,12 @@ public class EnemyControl : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         var prevSpeed = animator.speed;
-        if(GameManage.INSTANCE.IsRunning() && prevSpeed <= 0) {
+        if(GameManage.Instance.IsRunning() && prevSpeed <= 0) {
             animator.speed = 1f;
-        } else if(!GameManage.INSTANCE.IsRunning() && prevSpeed > 0) {
+        } else if(!GameManage.Instance.IsRunning() && prevSpeed > 0) {
             animator.speed = 0f;
         }
-        if (!GameManage.INSTANCE.IsRunning()) {
+        if (!GameManage.Instance.IsRunning()) {
             return;
         }
     }

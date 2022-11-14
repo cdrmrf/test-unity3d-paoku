@@ -13,7 +13,7 @@ public class PlayerInfoControl : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        var p = GameManage.INSTANCE?.playerInfo;
+        var p = GameManage.Instance?.playerInfo;
         if(p == null) {
             return;
         }

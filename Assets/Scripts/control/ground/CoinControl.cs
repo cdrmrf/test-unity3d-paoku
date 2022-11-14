@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinControl : MonoBehaviour {
     
-    private GameManage manage = GameManage.INSTANCE;
+    private GameManage manage = GameManage.Instance;
     //  分数是配置的，有的 +1，有的 -5，有的 +3
     public int score = 1;
 

@@ -10,7 +10,7 @@ public class BgControl : IGameReset {
 
     void Awake() {
         //  注册事件监听
-        EventCenter.GetInstance().AddEventListener2(EventEnum.GAME_RESET, Reset);
+        EventCenter.Instance.AddEventListener2(EventEnum.GAME_RESET, Reset);
         //  记录原始坐标
         int cc = transform.childCount;
         for(int i=0;i<cc;i++) {
@@ -25,13 +25,13 @@ public class BgControl : IGameReset {
 
     // Update is called once per frame
     void Update() {
-        if(!GameManage.INSTANCE.IsRunning()) {
+        if(!GameManage.Instance.IsRunning()) {
             return;
         }
         foreach (Transform tran in transform) {
             Vector3 objPos = tran.position;
             //  移动速度
-            objPos.x = objPos.x - Speed * Time.deltaTime * (1.0f + GameManage.INSTANCE.playerInfo.level / 5.0f);
+            objPos.x = objPos.x - Speed * Time.deltaTime * (1.0f + GameManage.Instance.playerInfo.level / 5.0f);
             if(objPos.x < -7.2f) {
                 objPos.x += 7.2f * defaultPositions.Count;
             }

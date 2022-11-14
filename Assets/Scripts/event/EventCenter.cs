@@ -1,26 +1,12 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EventCenter : MonoBehaviour {
-
-    private static EventCenter instance;
+public class EventCenter : Singleton<EventCenter> {
 
     private Dictionary<EventEnum, IEvent> _eventDic = new Dictionary<EventEnum, IEvent>();
     private Dictionary<EventEnum, IEvent> _eventDicNoParam = new Dictionary<EventEnum, IEvent>();
-
-    private void Awake() {
-        if (instance != null) {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
-        DontDestroyOnLoad(instance);
-    }
-
-    public static EventCenter GetInstance() {
-        return instance;
-    }
 
     // 添加带参数事件的监听
     public void AddEventListener<T>(EventEnum name, UnityAction<T> action) {
